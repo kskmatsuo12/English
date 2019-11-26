@@ -7,17 +7,19 @@ import {
   FlatList
 } from 'react-native';
 
-class MemoList extends React.Component {
+class MemoListData extends React.Component {
   renderMemo({ item }) {
     return (
       <TouchableHighlight
         onPress={() => {
-          this.props.navigation.navigate('MemoDetail', { memo: item });
+          this.props.navigation.navigate('MemoDataDetail', {
+            memo: item
+          });
         }}
       >
         <View style={styles.memoListItem}>
-          <Text style={styles.memoTitle}>{item.word}</Text>
-          <Text style={styles.memoDate}>{item.value}</Text>
+          <Text style={styles.memoTitle}>{item.text}</Text>
+          <Text style={styles.memoDate}>{item.mean}</Text>
         </View>
       </TouchableHighlight>
     );
@@ -56,4 +58,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MemoList;
+export default MemoListData;

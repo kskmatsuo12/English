@@ -48,11 +48,7 @@ class MemoListScreen extends React.Component {
             this.props.navigation.navigate('MemoCreate');
           }}
         />
-        <TouchableHighlight
-          onPress={() => {
-            this.props.navigation.navigate('MemoData');
-          }}
-        >
+        <TouchableHighlight>
           <Button
             title='データベースに繋ぐ'
             onPress={() => {

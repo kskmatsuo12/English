@@ -8,26 +8,32 @@ import {
 } from 'react-native';
 import { AsyncStorage } from 'react-native';
 
-import MemoList from '../components/MemoList';
+import MemoListData from '../components/MemoListData';
 import CircleButton from '../elements/CircleButton';
 
 //this.props.navigation.navigate('MemoEdit')
 
 class MemoDataScreen extends React.Component {
   state = {
-    posts: []
+    posts: ''
     // keys: []
   };
 
   componentWillMount() {
     const request = new XMLHttpRequest();
+    let json;
+    let self = this;
     request.onreadystatechange = function(e) {
       if (this.readyState == 4 && this.status == 200) {
-        console.log(this.responseText);
-        let json = JSON.parse(this.responseText);
-        console.log(json.id);
+        json = JSON.parse(this.responseText);
+        console.log(json);
+        // this.state = this.state.bind(this);
+        self.setState({
+          posts: json
+        });
       }
     };
+    console.log('aaa');
 
     request.open(
       'GET',
@@ -40,8 +46,7 @@ class MemoDataScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>test</Text>
-        <MemoList
+        <MemoListData
           memoList={this.state.posts}
           navigation={this.props.navigation}
         />

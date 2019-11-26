@@ -17,7 +17,7 @@ import MemoEditScreen from './src/screens/MemoEditScreen';
 import MemoCreateScreen from './src/screens/MemoCreateScreen';
 import MemoDataCreateScreen from './src/screens/MemoDataCreateScreen';
 import MemoDataScreen from './src/screens/MemoDataScreen';
-
+import MemoDataDetailScreen from './src/screens/MemoDataDetailScreen';
 getData = async () => {
   try {
     const value = await AsyncStorage.getItem('posts');
@@ -33,14 +33,17 @@ getData = async () => {
 
 const App = createStackNavigator(
   {
+    Home: {
+      screen: MemoListScreen
+    },
     MemoData: {
       screen: MemoDataScreen
     },
+    MemoDataDetail: {
+      screen: MemoDataDetailScreen
+    },
     MemoDataCreate: {
       screen: MemoDataCreateScreen
-    },
-    Home: {
-      screen: MemoListScreen
     },
     MemoCreate: {
       screen: MemoCreateScreen
